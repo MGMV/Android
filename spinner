@@ -1,0 +1,23 @@
+ Label header;
+    Picker picker;
+    public MainPage()
+    {
+        header = new Label
+        {
+            Text = "Выберите язык",
+            FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
+        };
+ 
+        picker = new Picker 
+        {
+            Title = "Язык"
+        };
+        picker.Items.Add("C#");
+        picker.Items.Add("JavaScript");
+        picker.Items.Add("Java");
+        picker.Items.Add("PHP");
+ 
+        picker.SelectedIndexChanged += picker_SelectedIndexChanged;
+ 
+        this.Content = new StackLayout { Children = { header, picker } };
+    }
