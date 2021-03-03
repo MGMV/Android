@@ -1,0 +1,18 @@
+ public MainPage()
+{
+    Button alertButton = new Button
+    {
+        Text = "Alert",
+        VerticalOptions = LayoutOptions.Start,
+        HorizontalOptions = LayoutOptions.Center
+    };
+    alertButton.Clicked += AlertButton_Clicked;
+
+    Content = alertButton;
+}
+
+private async void AlertButton_Clicked(object sender, EventArgs e)
+{
+    bool result = await DisplayAlert("Заголовок", "Вы хотите удалить элемент?", "Да", "Нет");
+    await DisplayAlert("Заголовок", "Вы выбрали: "+ (result ? "Удалить" : "Отменить"), "OK");
+}
