@@ -1,0 +1,17 @@
+this.chart1.SaveImage( "asd.png", System.Drawing.Imaging.ImageFormat.Png);
+Document document = new Document();
+Stream myStream ;
+     using (var stream = new FileStream(".pdf", FileMode.Create, FileAccess.Write, FileShare.None))
+
+        {
+            PdfWriter.GetInstance(document, stream);
+            document.Open();
+            using (var imageStream = new FileStream(saveFileDialog1.FileName + ".png", FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            {
+                var image = Image.GetInstance(imageStream);
+                document.Add(image);
+            }
+            document.Close();
+             MessageBox.Show("сохранено");
+             File.Delete(saveFileDialog1.FileName + ".png");
+        
